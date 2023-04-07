@@ -4,7 +4,7 @@ LABEL maintainer="Unity Robotics <unity-robotics@unity3d.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEV_NAME=rosdev
-ENV ROS_DISTRO=galactic
+ENV ROS_DISTRO=foxy
 ENV GROUP_NAME=ros
 ENV WS_NAME=colcon_ws
 
