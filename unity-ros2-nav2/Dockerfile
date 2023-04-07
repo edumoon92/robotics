@@ -28,6 +28,8 @@ RUN apt-get update -q && \
         python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+
 # Install the immutable components BEFORE we copy in build context stuff to keep the rebuild process manageable
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B && \
     curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add - && \
