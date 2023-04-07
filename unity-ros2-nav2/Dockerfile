@@ -29,7 +29,7 @@ RUN apt-get update -q && \
     && rm -rf /var/lib/apt/lists/*
 
 # Install the immutable components BEFORE we copy in build context stuff to keep the rebuild process manageable
-RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key 4EB27DB2A3B88B8B && \
+RUN apt-key adv --keyserver 'keyserver.ubuntu.com' --recv-key 4EB27DB2A3B88B8B && \
     curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add - && \
     echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > \
         /etc/apt/sources.list.d/ros2-latest.list && \
@@ -48,7 +48,7 @@ COPY --chown=${DEV_NAME} colcon_ws /home/${DEV_NAME}/colcon_ws
 COPY ros2-setup.bash /bin/ros2-setup.bash
 # Doing a second fetch of sources & apt-get update here, because these ones depend on the state of the build context
 # in our repo
-RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key 4EB27DB2A3B88B8B && \
+RUN apt-key adv --keyserver 'keyserver.ubuntu.com' --recv-key 4EB27DB2A3B88B8B && \
     curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add - && \
     echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > \
         /etc/apt/sources.list.d/ros2-latest.list && \
